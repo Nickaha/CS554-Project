@@ -1,0 +1,15 @@
+{
+    "name": "cs-554-finalproject-backend",
+    "version": "1.0.0",
+    "description": "This is where the elastic search code will be.",
+    "main": "index.js",
+    "scripts": {
+        "start": "node index.js",
+        "seed": "node seed.js"
+    },
+    "author": "TODO",
+    "license": "ISC",
+    "dependencies": {
+        "@elastic/elasticsearch": "^7.15.0"
+    }
+}
