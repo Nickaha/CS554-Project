@@ -257,7 +257,29 @@ async function run () {
     body: {
       item: 'guacamole',
       gluten_free: true,
+      raw: true,
+      vegan: true
+    }
+  })
+
+  await client.index({
+    index: 'topping',
+    id: '12',
+    body: {
+      item: 'kani salad',
+      gluten_free: true,
       raw: false,
+      vegan: false
+    }
+  })
+
+  await client.index({
+    index: 'topping',
+    id: '13',
+    body: {
+      item: 'seaweed salad',
+      gluten_free: true,
+      raw: true,
       vegan: true
     }
   })
