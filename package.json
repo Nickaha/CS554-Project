@@ -2,14 +2,20 @@
     "name": "cs-554-finalproject-backend",
     "version": "1.0.0",
     "description": "This is where the elastic search code will be.",
-    "main": "index.js",
+    "main": "app.js",
     "scripts": {
-        "start": "node index.js",
+        "start": "node app.js",
         "seed": "node seed.js"
     },
     "author": "TODO",
     "license": "ISC",
     "dependencies": {
-        "@elastic/elasticsearch": "^7.15.0"
+        "@elastic/elasticsearch": "^7.15.0",
+        "uuid": "^8.3.2",
+        "express": "^4.17.1",
+        "bluebird": "^3.4.7",
+        "cors": "^2.8.5",
+        "node-redis": "^0.1.7",
+        "redis": "^3.0.2"
     }
 }

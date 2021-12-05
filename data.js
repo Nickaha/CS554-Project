@@ -1,5 +1,5 @@
 'use strict'
-
+const uuid = require('uuid');
 const { Client } = require('@elastic/elasticsearch')
 const client = new Client({ node: 'http://localhost:9200' })
 
@@ -25,7 +25,8 @@ async function get_all_item(input) {
         body: {
             query: {
                 match_all: { }
-            }
+            },
+            size: 100
         }
     })
 
@@ -170,10 +171,111 @@ async function filtered_sauce(gluten_free, vegan) {
     return return_array
 }
 
+// should probably refactor this later
+async function get_all_premade() {
+
+    const { body } = await client.search({
+        index: 'premade-bowls',
+        body: {
+            query: {
+                match_all: { }
+            }
+        }
+    })
+
+    let data = body.hits.hits;
+    let return_array = [];
+    for (let i = 0; i < data.length; i++) {
+        let obj = data[i]._source;
+        return_array.push(obj);
+    }
+
+    // console.log(return_array)
+    return return_array
+}
+
+async function filtered_premade(gluten_free, vegan) {
+    if (gluten_free == null || vegan == null) {
+        throw "Missing argument.";
+    }
+    if (typeof gluten_free != "boolean" || typeof vegan != "boolean") {
+        throw "Invalid argument (not bool/string).";
+    }
+
+    const { body } = await client.msearch({
+        body: [
+            {index: 'premade-bowls'},
+            {query: {match: {gluten_free: gluten_free}}, size: 100},
+
+            {index: 'premade-bowls'},
+            {query: {match: {vegan: vegan}}, size: 100}
+
+        ]
+        
+    })
+
+    let data = body.responses;
+
+    let temp_array0 = [];
+    let temp_array1 = [];
+    for (let i = 0; i < data.length; i++) {
+        let curr_array = data[i].hits.hits;
+        for (let j = 0; j < curr_array.length; j++) {
+            let to_add = curr_array[j]._source;
+            if (i == 0) {
+                temp_array0.push(JSON.stringify(to_add));
+            }
+            else if (i == 1) {
+                temp_array1.push(JSON.stringify(to_add));
+            }
+        }
+    }
+
+    let intersection = temp_array0.filter(x => temp_array1.includes(x));
+
+
+    let return_array = intersection.map(x => JSON.parse(x));
+    // console.log(return_array)
+    return return_array
+}
+
+// the lazy programmer doesn't want to implement this 
+// but as a business, you are asking to go out of business
+// if you don't track your analytics
+// this function is just here to push orders into the database
+// once the user presses checkout
+// no put route needed because state will keep track of all
+// changes so we just need to post 
+async function add_order(order) {
+    if (!order) {
+        throw "Missing argument."
+    }
+    if (typeof order != "object") {
+        throw "Invalid input: must be object"
+    }
+
+    await client.index({
+        index: 'all-orders',
+        id: uuid.v4(),
+        body: {
+          name: order.name,
+          base: order.base,
+          protein: order.protein,
+          topping: order.topping,
+          sauce: order.sauce,
+        }
+    })
+    console.log('order added to database')
+}
+
+
 module.exports = {
     get_all_item,
     filtered_base,
     filtered_protein_or_toppings,
-    filtered_sauce
+    filtered_sauce,
+    get_all_premade,
+    filtered_premade,
+    add_order
 }
 

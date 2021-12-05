@@ -338,6 +338,69 @@ async function run () {
 
   await client.indices.refresh({ index: 'sauce' })
 
+  await client.index({
+    index: 'premade-bowls',
+    id: '1',
+    body: {
+      name: 'Gold Standard Chicken',
+      base: 'white rice',
+      protein: ['chicken'],
+      topping: ['sweet onion', 'green pepper', 'pineapple'],
+      sauce: ['teriyaki sauce'],
+      gluten_free: false,
+      vegan: false,
+      price: 11.00
+    }
+  })
+
+  await client.index({
+    index: 'premade-bowls',
+    id: '2',
+    body: {
+      name: 'Fish Lover',
+      base: 'white rice',
+      protein: ['salmon', 'tuna'],
+      topping: ['corn', 'cucumber', 'kani salad', 'seaweed salad'],
+      sauce: ['poke sauce'],
+      gluten_free: false,
+      vegan: false,
+      price: 14.70
+    }
+  })
+
+  await client.index({
+    index: 'premade-bowls',
+    id: '3',
+    body: {
+      name: 'I Love Chipotle',
+      base: 'brown rice',
+      protein: ['steak'],
+      topping: ['romaine lettuce', 'cheese', 'guacamole'],
+      sauce: ['sour cream'],
+      gluten_free: true,
+      vegan: false,
+      price: 13.40
+    }
+  })
+
+  await client.index({
+    index: 'premade-bowls',
+    id: '4',
+    body: {
+      name: 'No Meat For Me',
+      base: 'brown rice',
+      protein: ['beyond meat', 'fried tofu'],
+      topping: ['romaine lettuce', 'sweet onion', 'green pepper'],
+      sauce: ['teriyaki sauce'],
+      gluten_free: true,
+      vegan: true,
+      price: 14.40
+    }
+  })
+  
+
+  await client.indices.refresh({ index: 'premade-bowls' })
+
   console.log("Seeding done...")
 
 }
