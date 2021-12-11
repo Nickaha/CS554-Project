@@ -1,7 +1,7 @@
 import React from "react";
-import SignOutButton from "./SignOut";
+import SignOutButton from "./FireBaseComponents/SignOut";
 import "../App.css";
-import ChangePassword from "./ChangePassword";
+import ChangePassword from "./FireBaseComponents/ChangePassword";
 
 function Account() {
   return (
