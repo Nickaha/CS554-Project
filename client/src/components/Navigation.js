@@ -112,7 +112,7 @@ const NavigationNonAuth = () => {
           </li>
           <li className="nav-item">
             <NavLink className="nav-link" exact to="/" activeClassName="active">
-              Landing
+              Home
             </NavLink>
           </li>
         </ul>
