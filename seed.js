@@ -397,7 +397,16 @@ async function run () {
       price: 14.40
     }
   })
-  
+
+  await client.index({
+    index: 'reviews',
+    body: {
+      name: 'Customer A',
+      review: 'All dishes are delicious!!',
+      date: "12/15/2021 16:44"
+    }
+  })
+ 
 
   await client.indices.refresh({ index: 'premade-bowls' })
 

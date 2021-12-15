@@ -528,7 +528,7 @@ app.post('/reviews/post', async (req, res) => {
       return;
     }
     try {
-      const result = await data.add_review(reviewPostData.name, reviewPostData.review);
+      const result = await data.add_review(reviewPostData.name, reviewPostData.review,reviewPostData.date);
       res.json({status: 'SUCCESS'});
     } catch (e) {
       res.status(500).json({ error: e });

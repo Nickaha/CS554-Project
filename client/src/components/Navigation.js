@@ -41,7 +41,7 @@ const NavigationAuth = () => {
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <h1 className="navbar-brand">Rice To meet you</h1>
       <button
-        class="navbar-toggler"
+        className="navbar-toggler"
         type="button"
         data-toggle="collapse"
         data-target="#navbarNav"
@@ -83,7 +83,7 @@ const NavigationNonAuth = () => {
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <h1 className="navbar-brand">Rice To meet you</h1>
       <button
-        class="navbar-toggler"
+        className="navbar-toggler"
         type="button"
         data-toggle="collapse"
         data-target="#navbarNav"

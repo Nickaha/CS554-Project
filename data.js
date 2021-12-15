@@ -269,7 +269,7 @@ async function add_order(order) {
     return true;
 }
 
-async function add_review(name, review) {
+async function add_review(name, review, date) {
     if (!name || !review) {
         throw "Missing argument."
     }
@@ -282,7 +282,8 @@ async function add_review(name, review) {
         id: uuid.v4(),
         body: {
           name: name,
-          review: review
+          review: review,
+          date:date
         }
     })
 

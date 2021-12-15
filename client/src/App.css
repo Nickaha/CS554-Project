@@ -81,3 +81,13 @@
 	width: 100%;
 	height:auto;
 }
+
+
+.profile{
+    float:left;
+    width:30%;
+}
+.profile_name{
+    float:right;
+    width:70%;
+}

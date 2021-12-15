@@ -9,7 +9,7 @@ function Landing() {
     
     <h1>Welcome to Rice to Meet You</h1>
 
-    <img id="LandingRice" src="/imgs/landing.jpg"/>
+    <img id="LandingRice" src="/imgs/landing.jpg" alt='landing_pic'/>
 
     <div id="InfoText">
       At Rice to Meet You, we specialize in bowls. 
