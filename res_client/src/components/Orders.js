@@ -45,6 +45,7 @@ const Orders = () => {
     const classes = useStyles();
     const [orderData, setOrderData] = useState(undefined);
     const [counter, setCounter] = useState(0);
+    const [time, setTime] = useState(Date.now());
     let card = null;
 
     async function serve_food(order){
@@ -73,7 +74,15 @@ const Orders = () => {
             }
         }
         fetchData();
-    }, []);
+
+        // do this to always refresh new orders
+        const interval = setInterval(() => setTime(Date.now()), 1000);
+        console.log(time)
+        return () => {
+            clearInterval(interval)
+        }
+    }, [time]);
+
 
     const buildCard = (order) => {
         return (
