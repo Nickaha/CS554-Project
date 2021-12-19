@@ -4,7 +4,6 @@ import actions from '../actions'
 import axios from "axios";
 import '../App.css';
 
-import Cart from './Cart';
 
 function Order() {
   const [premadeData, setPremadeData] = useState(undefined);
@@ -149,7 +148,6 @@ function Order() {
   return (
     <div>
 
-      <Cart />
 
       <h2>Order a Bowl:</h2>
       <form >

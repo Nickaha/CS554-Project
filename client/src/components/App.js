@@ -9,6 +9,8 @@ import SignIn from './FireBaseComponents/SignIn';
 import SignUp from './FireBaseComponents/SignUp';
 import Order from './Order';
 import ReviewsPage from './ReviewsPage';
+import Cart from './Cart';
+import Checkout from './Checkout';
 import { AuthProvider } from '../firebase/Auth';
 import PrivateRoute from './PrivateRoute';
 import Pickup from './Pickup';
@@ -27,6 +29,8 @@ function App() {
         <Route exact path="/pickup" component={Pickup} />
         <Route exact path="/delivery" component={Deliver} />
         <Route exact path="/reviews" component={ReviewsPage} />
+        <Route exact path="/cart" component={Cart} />
+        <Route exact path="/checkout" component={Checkout} />
         <PrivateRoute path="/home" component={Home} />
         <PrivateRoute path="/account" component={Account} />
         <Route path="/signin" component={SignIn} />

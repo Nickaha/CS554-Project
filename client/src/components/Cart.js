@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import {useSelector, useDispatch} from 'react-redux';
+import {Link} from 'react-router-dom';
 import actions from '../actions';
 import CartEditItem from './CartEditItem';
 import '../App.css';
-import Checkout from "./Checkout";
 
 function Cart() {
     const dispatch = useDispatch();
@@ -87,10 +87,16 @@ function Cart() {
               })}
           </ul>
             ) : (
-            <p>No items in cart.</p>
+            <div>
+              <p>No items in cart.</p>
+              <Link to='/order'><button>Go to Order</button></Link>
+            </div>
             )}
-           {(cart.length > 0) && (<h3>Total Order Cost: {formatter.format(totalcost)}</h3>)} 
-           <Checkout price={totalcost} />
+           {(cart.length > 0) && (<div><h3>Total Order Cost: {formatter.format(totalcost)}</h3>
+            <Link to='/checkout'><button>Go to Checkout</button></Link>
+            </div>
+           )} 
+           
         </div>
       );
 

@@ -49,6 +49,11 @@ const NavigationAuth = () => {
               Reviews
             </NavLink>
           </li>
+          <li className="nav-item">
+            <NavLink className="nav-link" exact to="/cart" activeClassName="active">
+              Cart/Checkout
+            </NavLink>
+          </li>
           <li>
             <SignOutButton />
           </li>
@@ -98,6 +103,11 @@ const NavigationNonAuth = () => {
           <li className="nav-item">
             <NavLink className="nav-link" exact to="/reviews" activeClassName="active">
               Reviews
+            </NavLink>
+          </li>
+          <li className="nav-item">
+            <NavLink className="nav-link" exact to="/cart" activeClassName="active">
+              Cart/Checkout
             </NavLink>
           </li>
         </ul>

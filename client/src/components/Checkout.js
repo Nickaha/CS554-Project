@@ -46,9 +46,13 @@ const useStyles = makeStyles({
 function Checkout(props){
     const dispatch = useDispatch();
     const orders = useSelector( (state) => state.cart );
-    const tp = props.price;
+    let tp = 0 //Reducer to get total price.
+    
     const classes = useStyles();
     const [confirm, setConfirm] = useState(false);
+    orders.forEach(bowl => {
+        tp += bowl.price; 
+    });
     const deleteItem = (id) =>{
         dispatch(actions.deleteFromCart(id));
     }
