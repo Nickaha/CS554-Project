@@ -11,6 +11,8 @@ import Order from './Order';
 import ReviewsPage from './ReviewsPage';
 import { AuthProvider } from '../firebase/Auth';
 import PrivateRoute from './PrivateRoute';
+import Pickup from './Pickup';
+import Deliver from './Deliver';
 function App() {
   return (
     <AuthProvider>
@@ -22,6 +24,8 @@ function App() {
         </div>
         <Route exact path="/" component={Landing} />
         <Route exact path="/order" component={Order} />
+        <Route exact path="/pickup" component={Pickup} />
+        <Route exact path="/delivery" component={Deliver} />
         <Route exact path="/reviews" component={ReviewsPage} />
         <PrivateRoute path="/home" component={Home} />
         <PrivateRoute path="/account" component={Account} />
