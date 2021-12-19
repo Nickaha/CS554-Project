@@ -9,14 +9,39 @@ const Navigation = () => {
   return <div>{currentUser ? <NavigationAuth /> : <NavigationNonAuth />}</div>;
 };
 
-
+// const NavigationAuth = () => {
+//   return (
+//     <nav className="navigation">
+//       <ul>
+//         <li>
+//           <NavLink exact to="/" activeClassName="active">
+//             Landing
+//           </NavLink>
+//         </li>
+//         <li>
+//           <NavLink exact to="/home" activeClassName="active">
+//             Home
+//           </NavLink>
+//         </li>
+//         <li>
+//           <NavLink exact to="/account" activeClassName="active">
+//             Account
+//           </NavLink>
+//         </li>
+//         <li>
+//           <SignOutButton />
+//         </li>
+//       </ul>
+//     </nav>
+//   );
+// };
 
 const NavigationAuth = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <h1 className="navbar-brand">Rice To meet you</h1>
       <button
-        className="navbar-toggler"
+        class="navbar-toggler"
         type="button"
         data-toggle="collapse"
         data-target="#navbarNav"
@@ -44,11 +69,6 @@ const NavigationAuth = () => {
               Account
             </NavLink>
           </li>
-          <li className="nav-item">
-            <NavLink className="nav-link" exact to="/reviews" activeClassName="active">
-              Reviews
-            </NavLink>
-          </li>
           <li>
             <SignOutButton />
           </li>
@@ -63,7 +83,7 @@ const NavigationNonAuth = () => {
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <h1 className="navbar-brand">Rice To meet you</h1>
       <button
-        className="navbar-toggler"
+        class="navbar-toggler"
         type="button"
         data-toggle="collapse"
         data-target="#navbarNav"
@@ -92,12 +112,7 @@ const NavigationNonAuth = () => {
           </li>
           <li className="nav-item">
             <NavLink className="nav-link" exact to="/" activeClassName="active">
-              Home
-            </NavLink>
-          </li>
-          <li className="nav-item">
-            <NavLink className="nav-link" exact to="/reviews" activeClassName="active">
-              Reviews
+              Landing
             </NavLink>
           </li>
         </ul>
