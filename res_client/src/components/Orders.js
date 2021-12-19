@@ -75,7 +75,7 @@ const Orders = () => {
         }
         fetchData();
 
-        // do this to always refresh new orders
+        // do this to always refresh
         const interval = setInterval(() => setTime(Date.now()), 1000);
         console.log(time)
         return () => {
