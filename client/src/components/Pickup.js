@@ -43,6 +43,8 @@ import {
 function Pickup(){
     const classes = useStyles();
     const [orderData, setOrderData] = useState(undefined);
+    const [time, setTime] = useState(Date.now());
+
     const buildCard = (order,served) => {
         return (
             <Grid item xs={12} sm={6} md={4} lg={3} xl={2} key={order.id}>
@@ -92,14 +94,17 @@ function Pickup(){
             }
         }
         fetchData();
-    }, []);
+
+        // do this to always refresh
+        const interval = setInterval(() => setTime(Date.now()), 5000);
+        console.log(time)
+        return () => {
+            clearInterval(interval)
+        }
+    }, [time]);
+    
     console.log(orderData);
-    useEffect(() => {
-        const interval = setInterval(() => {
-          console.log('This will run every second!');
-        }, 1000);
-        return () => clearInterval(interval);
-      }, []);
+
     if(orderData===[]){
         return (
             <div>

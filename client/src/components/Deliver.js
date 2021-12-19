@@ -44,6 +44,8 @@ function Deliver(){
     //const orders = useSelector( (state) => state.cart );
     const classes = useStyles();
     const [orderData, setOrderData] = useState(undefined);
+    const [time, setTime] = useState(Date.now());
+    
     let readyToDeliver = false;
     const buildCard = (order,served) => {
         return (
@@ -94,13 +96,15 @@ function Deliver(){
             }
         }
         fetchData();
-    }, []);
-    // useEffect(() => {
-    //     const interval = setInterval(() => {
-    //       console.log('This will run every second!');
-    //     }, 1000);
-    //     return () => clearInterval(interval);
-    //   }, []);
+
+        // do this to always refresh
+        const interval = setInterval(() => setTime(Date.now()), 5000);
+        console.log(time)
+        return () => {
+            clearInterval(interval)
+        }
+    }, [time]);
+
     if(!orderData){
         return (
             <div>
