@@ -26,7 +26,7 @@ function SignUp() {
   };
 
   if (currentUser) {
-    return <Redirect to="/home" />;
+    return <Redirect to="/" />;
   }
 
   return (

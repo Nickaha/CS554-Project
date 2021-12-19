@@ -7,7 +7,7 @@ import { AuthContext } from "../firebase/Auth";
 function ReviewsPage() {
   const [reviewsData, setReviewsData] = useState(undefined);
   let review_card = null;
-  
+  const [flag, setFlag] = useState(0);
   const { currentUser } = useContext(AuthContext);
   
   const submit_review = async (event) => {
@@ -22,13 +22,20 @@ function ReviewsPage() {
       try {
         var myDate = new Date();
         let time_str = myDate.getMonth()+1+"/"+myDate.getDate()+"/"+myDate.getFullYear()+"  "+myDate.getHours()+":"+myDate.getMinutes();
-        console.log(time_str);
+        reviewsData.push({
+          name: currentUser.email,
+          review: textarea.value,
+          date:time_str
+        });
+        setFlag(flag+1);
+        console.log(flag);
+        setReviewsData(reviewsData);
         await axios.post("http://localhost:3001/reviews/post", {
           name: currentUser.email,
           review: textarea.value,
           date:time_str
         });
-        window.location.reload();
+        //window.location.reload();
       } catch (error) {
         alert(error);
       }
@@ -39,13 +46,13 @@ function ReviewsPage() {
     async function fetchData() {
       try {
         const { data } = await axios.get(`http://localhost:3001/reviews`);
-        console.log(data);
         setReviewsData(data);
       } catch (e) {
         console.log(e);
       }
     }
     fetchData();
+
   }, []);
 
   review_card =
