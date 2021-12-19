@@ -1,3 +1,4 @@
+import { v4 as uuid } from 'uuid';
 const initalState = [];
 
 let copyState = null;
@@ -12,29 +13,32 @@ const cartReducer = (state = initalState, action) => {
       return [
         ...state,
         {
+          id: uuid(),
           name: payload.name,
           base: payload.base,
           protein: payload.protein,
           topping: payload.topping,
-          sauce: payload.sauce
+          sauce: payload.sauce,
+          price: payload.price
         }
       ];
     case 'DELETE_FROM_CART':
       copyState = [...state];
-      index = copyState.findIndex((x) => x.name === payload.name);
+      index = copyState.findIndex((x) => x.id.toString() === payload.id.toString());
       copyState.splice(index, 1);
       return [...copyState];
     
     case 'EDIT_ITEM_IN_CART':
       copyState = [...state];
-      index = copyState.findIndex((x) => x.name === payload.name);
+      index = copyState.findIndex((x) => x.id.toString() === payload.id.toString());
       copyState[index] = 
       {
         name: payload.name,
         base: payload.base,
         protein: payload.protein,
         topping: payload.topping,
-        sauce: payload.sauce
+        sauce: payload.sauce,
+        price: payload.price
       };
       return [...copyState];
     

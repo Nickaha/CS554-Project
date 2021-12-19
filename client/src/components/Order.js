@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch} from 'react-redux';
+import actions from '../actions'
 import axios from "axios";
-import "../App.css";
-
 import '../App.css';
 
 function Order() {
@@ -11,6 +11,8 @@ function Order() {
   const [numProtein, setNumProtein] = useState(1);
   const [numTopping, setNumTopping] = useState(1);
   const formatter = new Intl.NumberFormat('en-US', {style: 'currency',currency: 'USD'});
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     async function fetchData() {
@@ -41,6 +43,15 @@ function Order() {
       // Successful code executes in here
       console.log("bowl order:");
       console.log(order);
+
+      dispatch(actions.addToCart(
+        order.name,
+        order.base,
+        order.protein,
+        order.topping,
+        order.sauce,
+        order.price
+      ));
     }
   }
 
