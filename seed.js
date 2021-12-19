@@ -2,6 +2,7 @@
 
 const { Client } = require('@elastic/elasticsearch')
 const client = new Client({ node: 'http://localhost:9200' })
+const uuid = require('uuid');
 
 async function run () {
   // clean up db 
@@ -408,25 +409,47 @@ async function run () {
   })
 
   // remember to comment out this dummy data out when you submit
+  let first_uuid = uuid.v4();
+  let second_uuid = uuid.v4();
+  let third_uuid = uuid.v4();
   await client.index({
     index: 'orders',
+    id: first_uuid,
     body: {
       name: "My Order",
       base: "white rice",
       protein: ['steak'],
       topping: ['romaine lettuce', 'sweet onion', 'green pepper'],
       sauce: ['teriyaki sauce'],
+      served: false,
+      id: first_uuid,
     }
   })
 
   await client.index({
     index: 'orders',
+    id: second_uuid,
     body: {
       name: "My Order2",
-      base: "brown rice",
+      base: "white rice",
       protein: ['steak'],
       topping: ['romaine lettuce', 'sweet onion', 'green pepper'],
       sauce: ['teriyaki sauce'],
+      served: false,
+      id: second_uuid,
+    }
+  })
+  await client.index({
+    index: 'orders',
+    id: third_uuid,
+    body: {
+      name: "My Order",
+      base: "white rice",
+      protein: ['steak'],
+      topping: ['romaine lettuce', 'sweet onion', 'green pepper'],
+      sauce: ['teriyaki sauce'],
+      served: true,
+      id: third_uuid,
     }
   })
  

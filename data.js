@@ -37,7 +37,7 @@ async function get_all_item(input) {
         return_array.push(obj);
     }
 
-    // console.log(return_array)
+    console.log(return_array)
     return return_array
 }
 
@@ -254,15 +254,18 @@ async function add_order(order) {
         throw "Invalid input: must be object"
     }
 
+    let uuid_to_add = uuid.v4();
     await client.index({
         index: 'orders',
-        id: uuid.v4(),
+        id: uuid_to_add,
         body: {
           name: order.name,
           base: order.base,
           protein: order.protein,
           topping: order.topping,
           sauce: order.sauce,
+          id: uuid_to_add
+          served: false
         }
     })
     console.log('order added to database')
@@ -290,7 +293,22 @@ async function add_review(name, review, date) {
     console.log('review added to database')
     return true;
 }
-
+async function update_order(order){
+    if(!order){
+        throw "missing order"
+    }
+    console.log(order.id);
+    await client.update({
+        index:"orders",
+        id:order.id,
+        body: {
+            doc: {
+                served: true
+            }
+        }
+    })
+    return true;
+}
 
 module.exports = {
     get_all_item,
@@ -300,6 +318,7 @@ module.exports = {
     get_all_premade,
     filtered_premade,
     add_order,
-    add_review
+    add_review,
+    update_order
 }
 
