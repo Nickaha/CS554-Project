@@ -43,9 +43,11 @@ const useStyles = makeStyles({
     }
   });
   
-function Checkout(props){
+function Checkout(){
     const dispatch = useDispatch();
     const orders = useSelector( (state) => state.cart );
+    const user = useSelector( (state) => state.user );
+    console.log("User ID:",user.id);
     let tp = 0 //Reducer to get total price.
     
     const classes = useStyles();
@@ -59,7 +61,15 @@ function Checkout(props){
     async function confirmOrders(orders){
         setConfirm(true);
         for(const order of orders){
-            await axios.post("http://localhost:3001/order/post",order);
+            let post_order = {
+                user_id: user.id,
+                name: order.name,
+                base: order.base,
+                protein: order.protein,
+                topping: order.topping,
+                sauce: order.sauce
+            }
+            await axios.post("http://localhost:3001/order/post", post_order);
             deleteItem(order.id);
         }
         const { data } = await axios.get("http://localhost:3001/order");

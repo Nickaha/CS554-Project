@@ -497,6 +497,10 @@ app.get('/premade/filter', async (req, res) => {
 // post route for adding order to db
 app.post('/order/post', async (req, res) => {
   const orderPostData = req.body;
+    if (!orderPostData.user_id) {
+      res.status(400).json({ error: 'You must provide user ID' });
+      return;
+    }
     if (!orderPostData.name) {
       res.status(400).json({ error: 'You must provide name' });
       return;
@@ -519,6 +523,7 @@ app.post('/order/post', async (req, res) => {
     }
     try {
       let order_to_add = {
+          user_id: orderPostData.user_id,
           name: orderPostData.name,
           base: orderPostData.base,
           protein: orderPostData.protein,

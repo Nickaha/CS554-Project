@@ -259,6 +259,7 @@ async function add_order(order) {
         index: 'orders',
         id: uuid_to_add,
         body: {
+          user_id: order.user_id,
           name: order.name,
           base: order.base,
           protein: order.protein,

@@ -86,6 +86,13 @@ const editingItem = () => ({
     }
 });
 
+const changeId = (id) => ({
+    type: 'CHANGE_ID',
+    payload:{
+        id: id
+    }
+});
+
 
 module.exports = {
   addToCart,
@@ -98,6 +105,7 @@ module.exports = {
   selectProtein,
   selectTopping,
   selectSauce,
-  editingItem
+  editingItem,
+  changeId
 };
 
