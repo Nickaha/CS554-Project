@@ -8,7 +8,6 @@ import Navigation from './Navigation';
 import SignIn from './FireBaseComponents/SignIn';
 import SignUp from './FireBaseComponents/SignUp';
 import Order from './Order';
-import ReviewsPage from './ReviewsPage';
 import { AuthProvider } from '../firebase/Auth';
 import PrivateRoute from './PrivateRoute';
 function App() {
@@ -22,7 +21,6 @@ function App() {
         </div>
         <Route exact path="/" component={Landing} />
         <Route exact path="/order" component={Order} />
-        <Route exact path="/reviews" component={ReviewsPage} />
         <PrivateRoute path="/home" component={Home} />
         <PrivateRoute path="/account" component={Account} />
         <Route path="/signin" component={SignIn} />
