@@ -1,7 +1,8 @@
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import { useEffect } from 'react';
+import { useState,useEffect } from 'react';
+import React from 'react';
 import {
     Card,
     CardContent,
@@ -40,8 +41,43 @@ import {
     }
   });
 function Pickup(){
-    const orders = useSelector( (state) => state.cart );
+    const classes = useStyles();
     const [orderData, setOrderData] = useState(undefined);
+    const buildCard = (order,served) => {
+        return (
+            <Grid item xs={12} sm={6} md={4} lg={3} xl={2} key={order.id}>
+            <Card className={classes.card} variant="outlined">
+                    <CardContent>
+                    <Typography
+                        className={classes.titleHead}
+                        gutterBottom
+                        variant="h6"
+                        component="h2"
+                    >
+                        {order.name}
+                    </Typography>
+                    <Typography variant="body2" color="textSecondary" component="p">
+                        {order.base}
+                    </Typography>
+                    <Typography variant="body2" color="textSecondary" component="p">
+                        {order.protein}
+                    </Typography>
+                    <Typography variant="body2" color="textSecondary" component="p">
+                        {order.topping}
+                    </Typography>
+                    <Typography variant="body2" color="textSecondary" component="p">
+                        {order.sauce}
+                    </Typography>
+                    </CardContent>
+                    {
+                    served === true ?
+                    <p>Your order is ready to pick up</p>:
+                    <p>Your order is still preparing</p>
+                    }       
+            </Card>
+            </Grid>
+        );
+    };
     useEffect(() => {
         console.log('on load useeffect');
         async function fetchData() {
@@ -57,13 +93,14 @@ function Pickup(){
         }
         fetchData();
     }, []);
+    console.log(orderData);
     useEffect(() => {
         const interval = setInterval(() => {
           console.log('This will run every second!');
         }, 1000);
         return () => clearInterval(interval);
       }, []);
-    if(orders===[]){
+    if(orderData===[]){
         return (
             <div>
                 <p className="text-message">There is no order to pick up. Please go select your meal :)</p>
@@ -71,52 +108,18 @@ function Pickup(){
             </div>
         );
     } else{
-        const classes = useStyles();
-        const buildCard = (order,served) => {
-            return (
-                <Grid item xs={12} sm={6} md={4} lg={3} xl={2} key={order.id}>
-                <Card className={classes.card} variant="outlined">
-                        <CardContent>
-                        <Typography
-                            className={classes.titleHead}
-                            gutterBottom
-                            variant="h6"
-                            component="h2"
-                        >
-                            {order.name}
-                        </Typography>
-                        <Typography variant="body2" color="textSecondary" component="p">
-                            {order.base}
-                        </Typography>
-                        <Typography variant="body2" color="textSecondary" component="p">
-                            {order.protein}
-                        </Typography>
-                        <Typography variant="body2" color="textSecondary" component="p">
-                            {order.topping}
-                        </Typography>
-                        <Typography variant="body2" color="textSecondary" component="p">
-                            {order.sauce}
-                        </Typography>
-                        </CardContent>
-                        {
-                        served == true ?
-                        <p>Your order is ready to pick up</p>:
-                        <p>Your order is still preparing</p>
-                        }       
-                </Card>
-                </Grid>
-            );
-        };
+        console.log("building cards");
         let card = null;
-
+        //console.log(orders);
         card =
-        orders &&
-        orders.map((order) => {
-            let served = null;
-            orderData.forEach(x=>{
-                if(order.id === x.id) served = x.served;
-            });
-            return buildCard(order,served);
+        orderData &&
+        orderData.map((order) => {
+            // let served = null;
+            // //console.log(orderData);
+            // orderData.forEach(x=>{
+            //     if(order.id === x.id) served = x.served;
+            // });
+            return buildCard(order,order.served);
         });
         return (
             <Grid container className={classes.grid} spacing={5}>

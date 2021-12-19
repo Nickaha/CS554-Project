@@ -3,6 +3,7 @@ import {useSelector, useDispatch} from 'react-redux';
 import actions from '../actions';
 import CartEditItem from './CartEditItem';
 import '../App.css';
+import Checkout from "./Checkout";
 
 function Cart() {
     const dispatch = useDispatch();
@@ -89,6 +90,7 @@ function Cart() {
             <p>No items in cart.</p>
             )}
            {(cart.length > 0) && (<h3>Total Order Cost: {formatter.format(totalcost)}</h3>)} 
+           <Checkout price={totalcost} />
         </div>
       );
 

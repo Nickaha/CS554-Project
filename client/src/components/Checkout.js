@@ -7,10 +7,12 @@ import {
   makeStyles
 } from '@material-ui/core';
 import { useDispatch,useSelector } from 'react-redux';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import actions from "../actions";
 import '../App.css';
 import { Link } from 'react-router-dom';
+import "../App.css";
+import axios from 'axios';
 const useStyles = makeStyles({
     card: {
       maxWidth: 250,
@@ -40,14 +42,13 @@ const useStyles = makeStyles({
       background:'#440f2b'
     }
   });
-  import "../App.css";
-import axios from 'axios';
+  
 function Checkout(props){
     const dispatch = useDispatch();
     const orders = useSelector( (state) => state.cart );
     const tp = props.price;
     const classes = useStyles();
-    const {confirm, setConfirm} = useState(false);
+    const [confirm, setConfirm] = useState(false);
     const deleteItem = (id) =>{
         dispatch(actions.deleteFromCart(id));
     }
@@ -57,6 +58,8 @@ function Checkout(props){
             await axios.post("http://localhost:3001/order/post",order);
             deleteItem(order.id);
         }
+        const { data } = await axios.get("http://localhost:3001/order");
+        orders = data;
     }
     const buildCard = (order) => {
         return (
