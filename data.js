@@ -14,7 +14,7 @@ async function get_all_item(input) {
         throw "Invalid argument (empty string).";
     }
 
-    const valid_inputs = ['base', 'protein', 'topping', 'sauce', 'reviews'];
+    const valid_inputs = ['base', 'protein', 'topping', 'sauce', 'reviews', 'orders'];
 
     if (!valid_inputs.includes(input)) {
         throw "Invalid argument: input is not an index in elastic"
@@ -255,7 +255,7 @@ async function add_order(order) {
     }
 
     await client.index({
-        index: 'all-orders',
+        index: 'orders',
         id: uuid.v4(),
         body: {
           name: order.name,
@@ -270,7 +270,7 @@ async function add_order(order) {
 }
 
 async function add_review(name, review, date) {
-    if (!name || !review) {
+    if (!name || !review || !date) {
         throw "Missing argument."
     }
     if (typeof name != "string" || typeof review != "string") {

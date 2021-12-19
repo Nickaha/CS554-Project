@@ -495,9 +495,57 @@ app.get('/premade/filter', async (req, res) => {
 
 
 // post route for adding order to db
-app.post('/order', async (req, res) => {
-
+app.post('/order/post', async (req, res) => {
+  const orderPostData = req.body;
+    if (!orderPostData.name) {
+      res.status(400).json({ error: 'You must provide name' });
+      return;
+    }
+    if (!orderPostData.base) {
+      res.status(400).json({ error: 'You must provide base' });
+      return;
+    }
+    if (!orderPostData.protein) {
+      res.status(400).json({ error: 'You must provide protein' });
+      return;
+    }
+    if (!orderPostData.topping) {
+      res.status(400).json({ error: 'You must provide topping' });
+      return;
+    }
+    if (!orderPostData.sauce) {
+      res.status(400).json({ error: 'You must provide sauce' });
+      return;
+    }
+    try {
+      let order_to_add = {
+          name: orderPostData.name,
+          base: orderPostData.base,
+          protein: orderPostData.protein,
+          topping: orderPostData.topping,
+          sauce: orderPostData.sauce,
+      }
+      const result = await data.add_order(order_to_add);
+      res.json({status: 'SUCCESS'});
+    } catch (e) {
+      res.status(500).json({ error: e });
+  }
 })
+
+// get route for getting orders
+app.get('/order', async (req, res) => {
+  try {
+    const results = await data.get_all_item('orders');
+    res.json(results)
+  } catch (e) {
+      const er = {
+        title: "ERROR",
+        errors: e.message
+      }
+    res.status(404).json(er);
+  }
+}
+);
 
 // get route for reviews
 // can't cache in redis because it is going to get 
