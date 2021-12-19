@@ -1,29 +1,32 @@
-const addToCart = (bowl_name, base, protein, topping, sauce) => ({
+const addToCart = (name, base, protein, topping, sauce, price) => ({
     type: 'ADD_TO_CART',
     payload: {
-        name: bowl_name,
+        name: name,
         base: base,
         protein: protein,
         topping: topping,
-        sauce: sauce
+        sauce: sauce,
+        price: price
     }
 });
 
-const deleteFromCart = (bowl_name) => ({
+const deleteFromCart = (id) => ({
     type: 'DELETE_FROM_CART',
     payload: {
-        name: bowl_name,
+        id: id,
     }
 });
 
-const editItemInCart = (bowl_name, base, protein, topping, sauce) => ({
+const editItemInCart = (id, name, base, protein, topping, sauce, price) => ({
     type: 'EDIT_ITEM_IN_CART',
     payload: {
-        name: bowl_name,
+        id: id,
+        name: name,
         base: base,
         protein: protein,
         topping: topping,
-        sauce: sauce
+        sauce: sauce,
+        price: price
     }
 });
 
