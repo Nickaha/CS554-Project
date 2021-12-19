@@ -406,6 +406,29 @@ async function run () {
       date: "12/15/2021 16:44"
     }
   })
+
+  // remember to comment out this dummy data out when you submit
+  await client.index({
+    index: 'orders',
+    body: {
+      name: "My Order",
+      base: "white rice",
+      protein: ['steak'],
+      topping: ['romaine lettuce', 'sweet onion', 'green pepper'],
+      sauce: ['teriyaki sauce'],
+    }
+  })
+
+  await client.index({
+    index: 'orders',
+    body: {
+      name: "My Order2",
+      base: "brown rice",
+      protein: ['steak'],
+      topping: ['romaine lettuce', 'sweet onion', 'green pepper'],
+      sauce: ['teriyaki sauce'],
+    }
+  })
  
 
   await client.indices.refresh({ index: 'premade-bowls' })
