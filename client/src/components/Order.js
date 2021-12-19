@@ -4,6 +4,8 @@ import actions from '../actions'
 import axios from "axios";
 import '../App.css';
 
+import Cart from './Cart';
+
 function Order() {
   const [premadeData, setPremadeData] = useState(undefined);
   const [filterVegan, setFilterVegan] = useState(false);
@@ -18,7 +20,7 @@ function Order() {
     async function fetchData() {
       try {
         const { data } = await axios.get(`http://localhost:3001/premade`);
-        console.log(data);
+        //console.log(data);
         setPremadeData(data);
       } catch (e) {
         console.log(e);
@@ -41,8 +43,8 @@ function Order() {
       console.log(order);
     }else{
       // Successful code executes in here
-      console.log("bowl order:");
-      console.log(order);
+      //console.log("bowl order:");
+      //console.log(order);
 
       dispatch(actions.addToCart(
         order.name,
@@ -57,7 +59,7 @@ function Order() {
 
 
   const addPremadeBowl = (name) =>{
-    console.log(`adding pre-made ${name} to order`);
+    //console.log(`adding pre-made ${name} to order`);
     switch (name){
       case 'Gold Standard Chicken':
         orderBowl({
@@ -106,17 +108,17 @@ function Order() {
 
   const addCustomBowl = (e) =>{
     e.preventDefault();
-    console.log(`adding custom bowl to order`);
+    //console.log(`adding custom bowl to order`);
     let proteins = [];
     let toppings = [];
 
-    if (numProtein >= 3) proteins.push(e.target.protein_3.value);
-    if (numProtein >= 2) proteins.push(e.target.protein_2.value);
     proteins.push(e.target.protein_1.value);
+    if (numProtein >= 2) proteins.push(e.target.protein_2.value);
+    if (numProtein >= 3) proteins.push(e.target.protein_3.value);
 
-    if (numTopping >= 3) toppings.push(e.target.topping_3.value);
-    if (numTopping >= 2) toppings.push(e.target.topping_2.value);
     toppings.push(e.target.topping_1.value);
+    if (numTopping >= 2) toppings.push(e.target.topping_2.value);
+    if (numTopping >= 3) toppings.push(e.target.topping_3.value);
 
     orderBowl({
       name: 'Custom Bowl',
@@ -146,6 +148,9 @@ function Order() {
 
   return (
     <div>
+
+      <Cart />
+
       <h2>Order a Bowl:</h2>
       <form >
         <label>

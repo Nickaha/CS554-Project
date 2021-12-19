@@ -264,7 +264,7 @@ async function add_order(order) {
           protein: order.protein,
           topping: order.topping,
           sauce: order.sauce,
-          id: uuid_to_add
+          id: uuid_to_add,
           served: false
         }
     })

@@ -33,6 +33,7 @@ const cartReducer = (state = initalState, action) => {
       index = copyState.findIndex((x) => x.id.toString() === payload.id.toString());
       copyState[index] = 
       {
+        id: payload.id,
         name: payload.name,
         base: payload.base,
         protein: payload.protein,
