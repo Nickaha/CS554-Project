@@ -524,6 +524,7 @@ app.post('/order/post', async (req, res) => {
           protein: orderPostData.protein,
           topping: orderPostData.topping,
           sauce: orderPostData.sauce,
+          served: false
       }
       const result = await data.add_order(order_to_add);
       res.json({status: 'SUCCESS'});
@@ -544,6 +545,15 @@ app.get('/order', async (req, res) => {
       }
     res.status(404).json(er);
   }
+}
+);
+
+//patch route
+app.patch('/order/patch', async (req, res) => {
+  let updated_order = req.body;
+  console.log(req.body,"hgello");
+  const results = await data.update_order(updated_order)
+  res.json(updated_order)
 }
 );
 
