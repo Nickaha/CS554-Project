@@ -1,93 +1,208 @@
 .App {
-	text-align: center;
+  text-align: center;
 }
 
 .App-logo {
-	height: 40vmin;
-	pointer-events: none;
+  height: 40vmin;
+  pointer-events: none;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-	.App-logo {
-		animation: App-logo-spin infinite 20s linear;
-	}
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
 }
 
 .App-header {
-	background-color: #282c34;
-	height: 100px;
-	padding: 20px;
-	color: white;
+  background-color: #282c34;
+  height: 100px;
+  padding: 20px;
+  color: white;
 }
 
 .App-link {
-	color: #61dafb;
+  color: #61dafb;
 }
 
 @keyframes App-logo-spin {
-	from {
-		transform: rotate(0deg);
-	}
-	to {
-		transform: rotate(360deg);
-	}
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
-
+/*Navigation*/
 .navigation {
-	background: #282c34;
-	height: 150px;
+  background: #282c34;
+  height: 150px;
 }
 
 .navigation ul {
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 
 .navigation a:link,
 .navigation a:visited {
-	color: white;
-	text-decoration: none;
+  color: white;
+  text-decoration: none;
 }
 
 .active {
-	font-weight: bold;
-	color: blue !important;
+  font-weight: bold;
+  color: blue !important;
 }
-.active_signout {
-	color: #61dafb;
 
+:not(.active) {
+  color: black !important;
 }
+
+.active_signout {
+  color: #61dafb;
+}
+
+.nav-link {
+  color: white;
+  border-radius: 5px;
+  margin: 5px;
+  padding: 0.4rem 0.8rem;
+  border: 2px solid black;
+}
+
+.navletters {
+  color: black;
+}
+.nav-link:hover {
+  color: white;
+  border: 4px solid black;
+}
+
+.nav-link:focus {
+  color: white;
+  border: 4px solid black;
+}
+
+/* .nav-item {
+  background-color: #440f2b;
+  color: white;
+} */
 
 .error {
-	font-weight: bold;
-	color: red !important;
+  font-weight: bold;
+  color: red !important;
 }
 
 .forgotPassword {
-	background: none !important;
-	border: none !important;
-	text-decoration: underline;
-	margin-left: 5px;
-	color: #069;
+  background: none !important;
+  border: none !important;
+  text-decoration: underline;
+  margin-left: 5px;
+  color: #069;
 }
 
 .forgotPassword:hover {
-	text-decoration: none;
-	color: red;
+  text-decoration: none;
+  color: red;
 }
 
 #LandingRice {
-	width: 100%;
-	height:auto;
+  width: 50%;
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-
-.profile{
-    float:left;
-    width:30%;
+.profile {
+  float: left;
+  width: 30%;
 }
-.profile_name{
-    float:right;
-    width:70%;
+.profile_name {
+  float: right;
+  width: 70%;
+}
+/*Landing Page CSS*/
+.HomepageHeader {
+  text-align: center;
+}
+
+.InfoText {
+  text-align: center;
+}
+
+.nowbtn {
+  color: #faf0e6 !important;
+  background: #440f2b;
+  border: 2px solid black;
+  font-weight: bold;
+}
+
+.nowbtn:hover {
+  background: red;
+  border: 4px solid black;
+}
+
+.nowbtn:focus {
+  background: red;
+  border: 4px solid black;
+}
+
+/* Form Control for review */
+
+.w75 {
+  width: 75%;
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+/*Order Page*/
+
+.bowl-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: transparent;
+}
+
+.orderul {
+  float: left;
+  position: relative;
+  padding: 10px;
+  height: 40%;
+}
+
+.orderdiv {
+  width: 95%;
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.orderimg {
+  max-width: 300px;
+  border: 2px solid black;
+}
+
+.addtocart {
+  margin-bottom: 10px;
+}
+.addtocart:hover {
+  color: white;
+  background: rgb(9, 163, 9);
+  border: 4px solid black;
+}
+
+.addtocart:focus {
+  color: white;
+  background: rgb(9, 163, 9);
+  border: 4px solid black;
+}
+/*Make sure that the nav bar is always on top*/
+nav {
+  z-index: 1000;
 }
