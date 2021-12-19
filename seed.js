@@ -433,6 +433,10 @@ async function run () {
 
   await client.indices.refresh({ index: 'premade-bowls' })
 
+  await client.indices.refresh({ index: 'reviews' })
+
+  await client.indices.refresh({ index: 'orders' })
+
   console.log("Seeding done...")
 
 }
