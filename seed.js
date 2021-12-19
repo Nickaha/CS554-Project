@@ -156,7 +156,7 @@ async function run () {
     index: 'topping',
     id: '2',
     body: {
-      item: 'tomatoe',
+      item: 'tomato',
       gluten_free: true,
       raw: true,
       vegan: true
