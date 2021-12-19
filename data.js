@@ -14,7 +14,7 @@ async function get_all_item(input) {
         throw "Invalid argument (empty string).";
     }
 
-    const valid_inputs = ['base', 'protein', 'topping', 'sauce'];
+    const valid_inputs = ['base', 'protein', 'topping', 'sauce', 'reviews'];
 
     if (!valid_inputs.includes(input)) {
         throw "Invalid argument: input is not an index in elastic"
@@ -26,7 +26,7 @@ async function get_all_item(input) {
             query: {
                 match_all: { }
             },
-            size: 100
+            size: 1000
         }
     })
 
@@ -266,6 +266,29 @@ async function add_order(order) {
         }
     })
     console.log('order added to database')
+    return true;
+}
+
+async function add_review(name, review, date) {
+    if (!name || !review) {
+        throw "Missing argument."
+    }
+    if (typeof name != "string" || typeof review != "string") {
+        throw "Invalid input: must be object"
+    }
+
+    await client.index({
+        index: 'reviews',
+        id: uuid.v4(),
+        body: {
+          name: name,
+          review: review,
+          date:date
+        }
+    })
+
+    console.log('review added to database')
+    return true;
 }
 
 
@@ -276,6 +299,7 @@ module.exports = {
     filtered_sauce,
     get_all_premade,
     filtered_premade,
-    add_order
+    add_order,
+    add_review
 }
 

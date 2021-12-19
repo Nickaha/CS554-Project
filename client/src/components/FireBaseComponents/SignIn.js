@@ -33,7 +33,7 @@ function SignIn() {
     }
   };
   if (currentUser) {
-    return <Redirect to="/home" />;
+    return <Redirect to="/order" />;
   }
   return (
     <div className="container">
@@ -43,7 +43,7 @@ function SignIn() {
       <br /> 
       <br /> 
       <div className="row">
-        <div class="col"></div>
+        <div className="col"></div>
         <div className="col-4">
           <h1>Log in</h1>
           <form onSubmit={handleLogin}>
@@ -85,7 +85,7 @@ function SignIn() {
           <br />
           <SocialSignIn />
         </div>
-        <div class="col"></div>
+        <div className="col"></div>
       </div>
     </div>
   );

@@ -499,6 +499,42 @@ app.post('/order', async (req, res) => {
 
 })
 
+// get route for reviews
+// can't cache in redis because it is going to get 
+// updated by new reviews that get posted 
+app.get('/reviews', async (req, res) => {
+  try {
+    const results = await data.get_all_item('reviews');
+    res.json(results)
+  } catch (e) {
+      const er = {
+        title: "ERROR",
+        errors: e.message
+      }
+    res.status(404).json(er);
+  }
+}
+);
+
+// post route for reviews 
+app.post('/reviews/post', async (req, res) => {
+  const reviewPostData = req.body;
+    if (!reviewPostData.name) {
+      res.status(400).json({ error: 'You must provide name' });
+      return;
+    }
+    if (!reviewPostData.review) {
+      res.status(400).json({ error: 'You must provide review' });
+      return;
+    }
+    try {
+      const result = await data.add_review(reviewPostData.name, reviewPostData.review,reviewPostData.date);
+      res.json({status: 'SUCCESS'});
+    } catch (e) {
+      res.status(500).json({ error: e });
+  }
+})
+
 app.use('*', (req, res) => {
   res.status(404).json({ error: 'Not found' });
 });
