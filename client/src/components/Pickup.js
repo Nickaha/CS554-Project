@@ -44,7 +44,7 @@ function Pickup(){
     const classes = useStyles();
     const [orderData, setOrderData] = useState(undefined);
     const [time, setTime] = useState(Date.now());
-
+    const user = useSelector( (state) => state.user );
     const buildCard = (order,served) => {
         return (
             <Grid item xs={12} sm={6} md={4} lg={3} xl={2} key={order.id}>
@@ -114,6 +114,7 @@ function Pickup(){
         );
     } else{
         console.log("building cards");
+        let orderCount = 0;
         let card = null;
         //console.log(orders);
         card =
@@ -124,13 +125,28 @@ function Pickup(){
             // orderData.forEach(x=>{
             //     if(order.id === x.id) served = x.served;
             // });
-            return buildCard(order,order.served);
+
+            if (order.user_id.toString() === user.id.toString()){
+                orderCount += 1;
+                return buildCard(order,order.served);
+            }else{
+                return "";
+            }
         });
-        return (
-            <Grid container className={classes.grid} spacing={5}>
-                {card}
-            </Grid>
-        );
+        if(orderCount === 0){
+            return (
+                <div>
+                    <p className="text-message">There is no order to pick up. Please go select your meal :)</p>
+                    <Link to={"/order"}>Start your order here!</Link>
+                </div>
+            );
+        }else {
+            return (
+                <Grid container className={classes.grid} spacing={5}>
+                    {card}
+                </Grid>
+            );
+        }
     }
     
 }

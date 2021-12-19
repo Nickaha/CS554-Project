@@ -45,6 +45,7 @@ function Deliver(){
     const classes = useStyles();
     const [orderData, setOrderData] = useState(undefined);
     const [time, setTime] = useState(Date.now());
+    const user = useSelector( (state) => state.user );
     
     let readyToDeliver = false;
     const buildCard = (order,served) => {
@@ -117,6 +118,8 @@ function Deliver(){
         
         let card = null;
 
+        let orderCount = 0;
+
         card =
         orderData &&
         orderData.map((order) => {
@@ -124,7 +127,13 @@ function Deliver(){
             // orderData.forEach(x=>{
             //     if(order.id === x.id) served = x.served;
             // });
-            return buildCard(order,order.served);
+            if (order.user_id.toString() === user.id.toString()){
+                orderCount += 1;
+                return buildCard(order,order.served);
+            }else{
+                return "";
+            }
+            
         });
         readyToDeliver=true;
         orderData.forEach(x=>{
@@ -132,18 +141,27 @@ function Deliver(){
                 readyToDeliver=false;
             }
         });
-        return (
-            <div>
-            <Grid container className={classes.grid} spacing={5}>
-                {card}
-            </Grid>
-            {
-                readyToDeliver?
-                <Map />:
-                <p>Still waiting for the order to be done</p>
-            }
-            </div>
-        );
+        if(orderCount === 0){
+            return (
+                <div>
+                    <p className="text-message">There is no order to pick up. Please go select your meal :)</p>
+                    <Link to={"/order"}>Start your order here!</Link>
+                </div>
+            );
+        }else {
+            return (
+                <div>
+                <Grid container className={classes.grid} spacing={5}>
+                    {card}
+                </Grid>
+                {
+                    readyToDeliver?
+                    <Map />:
+                    <p>Still waiting for the order to be done</p>
+                }
+                </div>
+            );
+        }
     }
     
 }

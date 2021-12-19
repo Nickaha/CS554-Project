@@ -416,6 +416,7 @@ async function run () {
     index: 'orders',
     id: first_uuid,
     body: {
+      user_id: "91e51f28-b551-4c9f-93be-dc4faef4b114",
       name: "My Order",
       base: "white rice",
       protein: ['steak'],
