@@ -14,4 +14,9 @@ Getting started:
 8. Install Docker Desktop: https://www.docker.com/products/docker-desktop
 9. docker build . -t client
 10. docker run -it -p 3000:3000 client
-11. try out our website
+11. open up a new terminal
+12. cd into the other client folder
+13. npm start
+14. you act like an employee and click the button when you finish making a bowl
+15. this will effect your delivery / pickup times
+16. try out our website
