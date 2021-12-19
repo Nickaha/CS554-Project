@@ -4,7 +4,6 @@ import actions from '../actions'
 import axios from "axios";
 import '../App.css';
 
-
 function Order() {
   const [premadeData, setPremadeData] = useState(undefined);
   const [filterVegan, setFilterVegan] = useState(false);
@@ -53,6 +52,8 @@ function Order() {
         order.sauce,
         order.price
       ));
+
+      alert('Item added to cart');
     }
   }
 
