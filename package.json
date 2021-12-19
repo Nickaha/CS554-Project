@@ -11,11 +11,11 @@
     "license": "ISC",
     "dependencies": {
         "@elastic/elasticsearch": "^7.15.0",
-        "uuid": "^8.3.2",
-        "express": "^4.17.1",
         "bluebird": "^3.4.7",
         "cors": "^2.8.5",
+        "express": "^4.17.1",
         "node-redis": "^0.1.7",
-        "redis": "^3.0.2"
+        "redis": "^3.0.2",
+        "uuid": "^8.3.2"
     }
 }
