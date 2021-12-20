@@ -206,3 +206,57 @@
 nav {
   z-index: 1000;
 }
+
+/* Log In and sign up*/
+.submitbtn {
+  color: #faf0e6 !important;
+  background: #440f2b;
+  border: 2px solid black;
+  font-weight: bold;
+  border-radius: 4px;
+}
+
+.submitbtn:hover {
+  color: white;
+  background: rgb(9, 163, 9);
+  border: 4px solid black;
+}
+
+.submitbtn:focus {
+  color: white;
+  background: rgb(9, 163, 9);
+  border: 4px solid black;
+}
+
+/*Cart Page!*/
+.cartdiv {
+  width: 95%;
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cartimg {
+  max-width: 150px;
+  border: 2px solid black;
+}
+
+.deltocart {
+  margin-bottom: 10px;
+}
+.deltocart:hover {
+  color: white;
+  background: red;
+  border: 4px solid black;
+}
+
+.deltocart:focus {
+  color: white;
+  background: red;
+  border: 4px solid black;
+}
+
+.cardp {
+  text-align: center;
+}
