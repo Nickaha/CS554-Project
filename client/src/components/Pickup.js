@@ -142,9 +142,13 @@ function Pickup(){
             );
         }else {
             return (
+                <div>
                 <Grid container className={classes.grid} spacing={5}>
                     {card}
                 </Grid>
+                <br/>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.780551987794!2d-74.02614568434377!3d40.74485404354159!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259dc1f3d30a5%3A0x8375b030590cc06f!2sWesley%20J.%20Howe%20Center%2C%201%20Castle%20Point%20Terrace%2C%20Hoboken%2C%20NJ%2007030!5e0!3m2!1sen!2sus!4v1639952657901!5m2!1sen!2sus" width="600" height="450"  allowFullScreen="" loading="lazy"></iframe>:
+                </div>
             );
         }
     }
