@@ -27,28 +27,28 @@ const NavigationAuth = () => {
       <div className="collapse navbar-collapse" id="navbarNav">
         <ul className="navbar-nav">
           <li className="nav-item ">
-            <NavLink className="nav-link" exact to="/order">
+            <NavLink className="nav-link blacker" exact to="/order">
               Order
             </NavLink>
           </li>
 
           <li className="nav-item">
-            <NavLink className="nav-link" exact to="/">
+            <NavLink className="nav-link blacker" exact to="/">
               Landing
             </NavLink>
           </li>
           <li className="nav-item">
-            <NavLink className="nav-link" exact to="/account">
+            <NavLink className="nav-link blacker" exact to="/account">
               Account
             </NavLink>
           </li>
           <li className="nav-item">
-            <NavLink className="nav-link" exact to="/reviews">
+            <NavLink className="nav-link blacker" exact to="/reviews">
               Reviews
             </NavLink>
           </li>
           <li className="nav-item">
-            <NavLink className="nav-link" exact to="/cart">
+            <NavLink className="nav-link blacker" exact to="/cart">
               Cart/Checkout
             </NavLink>
           </li>
@@ -79,27 +79,32 @@ const NavigationNonAuth = () => {
       <div className="collapse navbar-collapse" id="navbarNav">
         <ul className="navbar-nav">
           <li className="nav-item ">
-            <NavLink className="nav-link" exact to="/order" color="black">
+            <NavLink
+              className="nav-link blacker"
+              exact
+              to="/order"
+              color="black"
+            >
               Order
             </NavLink>
           </li>
           <li className="nav-item">
-            <NavLink className="nav-link" exact to="/signin">
+            <NavLink className="nav-link blacker" exact to="/signin">
               Sign-in
             </NavLink>
           </li>
           <li className="nav-item">
-            <NavLink className="nav-link" exact to="/">
+            <NavLink className="nav-link blacker" exact to="/">
               Home
             </NavLink>
           </li>
           <li className="nav-item">
-            <NavLink className="nav-link" exact to="/reviews">
+            <NavLink className="nav-link blacker" exact to="/reviews">
               Reviews
             </NavLink>
           </li>
           <li className="nav-item">
-            <NavLink className="nav-link" exact to="/cart">
+            <NavLink className="nav-link blacker" exact to="/cart">
               Cart/Checkout
             </NavLink>
           </li>

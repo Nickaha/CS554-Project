@@ -55,7 +55,7 @@
   color: blue !important;
 }
 
-:not(.active) {
+.nav-link:not(.active) {
   color: black !important;
 }
 
@@ -259,4 +259,16 @@ nav {
 
 .cardp {
   text-align: center;
+}
+
+.blacker {
+  color: black;
+}
+
+.navbar-nav > .active > a {
+  color: aqua;
+  background-color: chartreuse;
+}
+.nav-item > a:hover {
+  color: aqua;
 }
