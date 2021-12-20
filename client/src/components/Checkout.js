@@ -50,6 +50,18 @@ function Checkout(){
     console.log("User ID:",user.id);
     let tp = 0 //Reducer to get total price.
     
+    
+    // Print formatting helpers
+    const array_to_capital_string = (array) => {
+        return (array.map((word) => { 
+                return word[0].toUpperCase() + word.substring(1); 
+            }).join(", "));
+    }
+    const capitalizeString = (str) => {
+        return str.replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase());
+    }
+    const formatter = new Intl.NumberFormat('en-US', {style: 'currency',currency: 'USD'});
+
     const classes = useStyles();
     const [confirm, setConfirm] = useState(false);
     orders.forEach(bowl => {
@@ -91,22 +103,22 @@ function Checkout(){
                     <strong>Base:</strong>
                     <br/>
                     <Typography variant="body2" color="textSecondary" component="p">
-                        {order.base}
+                        {capitalizeString(order.base)}
                     </Typography>
                     <strong>Protein:</strong>
                     <br/>
                     <Typography variant="body2" color="textSecondary" component="p">
-                        {order.protein}
+                        {array_to_capital_string(order.protein)}
                     </Typography>
                     <strong>Topping:</strong>
                     <br/>
                     <Typography variant="body2" color="textSecondary" component="p">
-                        {order.topping}
+                        {array_to_capital_string(order.topping)}
                     </Typography>
                     <strong>Sauce:</strong>
                     <br/>
                     <Typography variant="body2" color="textSecondary" component="p">
-                        {order.sauce}
+                        {array_to_capital_string(order.sauce)}
                     </Typography>
                     </CardContent>
             </Card>
@@ -121,14 +133,20 @@ function Checkout(){
         });
     return (
      <div>
+         <h2>Checkout</h2>
          <Grid container className={classes.grid} spacing={5}>
                 {card}
         </Grid>
-        <p>Total price is: {tp}</p>
+        <br />
+        {tp > 0 && <h3>Total price: {formatter.format(tp)}</h3>}
+        
         {
             confirm?
-            <div><Link to={"/pickup"}>Pick up your order</Link>
-            <Link to={"/delivery"}>Delivery</Link></div>:
+            <div>
+            <p>Order Confirmed!</p>
+            <Link to={"/pickup"}><button>Pick up your order</button></Link>
+            <br/>
+            <Link to={"/delivery"}><button>Delivery</button></Link></div>:
             <button className={classes.button} onClick={()=>{confirmOrders(orders)}}>Confirm your order</button>
         }
         

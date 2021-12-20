@@ -9,8 +9,6 @@ const Navigation = () => {
   return <div>{currentUser ? <NavigationAuth /> : <NavigationNonAuth />}</div>;
 };
 
-
-
 const NavigationAuth = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -29,28 +27,28 @@ const NavigationAuth = () => {
       <div className="collapse navbar-collapse" id="navbarNav">
         <ul className="navbar-nav">
           <li className="nav-item ">
-            <NavLink className="nav-link" exact to="/order" activeClassName="active">
+            <NavLink className="nav-link" exact to="/order">
               Order
             </NavLink>
           </li>
-          
+
           <li className="nav-item">
-            <NavLink className="nav-link" exact to="/" activeClassName="active">
+            <NavLink className="nav-link" exact to="/">
               Landing
             </NavLink>
           </li>
           <li className="nav-item">
-            <NavLink className="nav-link" exact to="/account" activeClassName="active">
+            <NavLink className="nav-link" exact to="/account">
               Account
             </NavLink>
           </li>
           <li className="nav-item">
-            <NavLink className="nav-link" exact to="/reviews" activeClassName="active">
+            <NavLink className="nav-link" exact to="/reviews">
               Reviews
             </NavLink>
           </li>
           <li className="nav-item">
-            <NavLink className="nav-link" exact to="/cart" activeClassName="active">
+            <NavLink className="nav-link" exact to="/cart">
               Cart/Checkout
             </NavLink>
           </li>
@@ -66,7 +64,7 @@ const NavigationAuth = () => {
 const NavigationNonAuth = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <h1 className="navbar-brand">Rice To meet you</h1>
+      <h1 className="navbar-brand">Rice To Meet You</h1>
       <button
         className="navbar-toggler"
         type="button"
@@ -81,32 +79,27 @@ const NavigationNonAuth = () => {
       <div className="collapse navbar-collapse" id="navbarNav">
         <ul className="navbar-nav">
           <li className="nav-item ">
-            <NavLink className="nav-link" exact to="/order" activeClassName="active">
+            <NavLink className="nav-link" exact to="/order" color="black">
               Order
             </NavLink>
           </li>
           <li className="nav-item">
-            <NavLink
-              className="nav-link"
-              exact
-              to="/signin"
-              activeClassName="active"
-            >
+            <NavLink className="nav-link" exact to="/signin">
               Sign-in
             </NavLink>
           </li>
           <li className="nav-item">
-            <NavLink className="nav-link" exact to="/" activeClassName="active">
+            <NavLink className="nav-link" exact to="/">
               Home
             </NavLink>
           </li>
           <li className="nav-item">
-            <NavLink className="nav-link" exact to="/reviews" activeClassName="active">
+            <NavLink className="nav-link" exact to="/reviews">
               Reviews
             </NavLink>
           </li>
           <li className="nav-item">
-            <NavLink className="nav-link" exact to="/cart" activeClassName="active">
+            <NavLink className="nav-link" exact to="/cart">
               Cart/Checkout
             </NavLink>
           </li>

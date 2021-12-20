@@ -47,6 +47,18 @@ function Deliver(){
     const [time, setTime] = useState(Date.now());
     const user = useSelector( (state) => state.user );
     
+    
+    // Print formatting helpers
+    const array_to_capital_string = (array) => {
+        return (array.map((word) => { 
+                return word[0].toUpperCase() + word.substring(1); 
+            }).join(", "));
+    }
+    const capitalizeString = (str) => {
+        return str.replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase());
+    }
+
+
     let readyToDeliver = false;
     const buildCard = (order,served) => {
         return (
@@ -62,16 +74,16 @@ function Deliver(){
                         {order.name}
                     </Typography>
                     <Typography variant="body2" color="textSecondary" component="p">
-                        {order.base}
+                        {capitalizeString(order.base)}
                     </Typography>
                     <Typography variant="body2" color="textSecondary" component="p">
-                        {order.protein}
+                        {array_to_capital_string(order.protein)}
                     </Typography>
                     <Typography variant="body2" color="textSecondary" component="p">
-                        {order.topping}
+                        {array_to_capital_string(order.topping)}
                     </Typography>
                     <Typography variant="body2" color="textSecondary" component="p">
-                        {order.sauce}
+                        {array_to_capital_string(order.sauce)}
                     </Typography>
                     </CardContent>
                     {
@@ -145,7 +157,7 @@ function Deliver(){
             return (
                 <div>
                     <p className="text-message">There is no order to pick up. Please go select your meal :)</p>
-                    <Link to={"/order"}>Start your order here!</Link>
+                    <Link to={"/order"}><button>Start your order here!</button></Link>
                 </div>
             );
         }else {

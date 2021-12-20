@@ -3,37 +3,45 @@ import axios from "axios";
 import "../App.css";
 import { AuthContext } from "../firebase/Auth";
 
-
 function ReviewsPage() {
   const [reviewsData, setReviewsData] = useState(undefined);
   let review_card = null;
   const [flag, setFlag] = useState(0);
   const { currentUser } = useContext(AuthContext);
-  
+
   const submit_review = async (event) => {
     event.preventDefault();
 
     if (currentUser === null) {
       alert("Error:Please login first!");
-      
     } else {
       let { textarea } = event.target.elements;
-      
+
       try {
         var myDate = new Date();
-        let time_str = myDate.getMonth()+1+"/"+myDate.getDate()+"/"+myDate.getFullYear()+"  "+myDate.getHours()+":"+myDate.getMinutes();
+        let time_str =
+          myDate.getMonth() +
+          1 +
+          "/" +
+          myDate.getDate() +
+          "/" +
+          myDate.getFullYear() +
+          "  " +
+          myDate.getHours() +
+          ":" +
+          myDate.getMinutes();
         reviewsData.push({
           name: currentUser.email,
           review: textarea.value,
-          date:time_str
+          date: time_str,
         });
-        setFlag(flag+1);
+        setFlag(flag + 1);
         console.log(flag);
         setReviewsData(reviewsData);
         await axios.post("http://localhost:3001/reviews/post", {
           name: currentUser.email,
           review: textarea.value,
-          date:time_str
+          date: time_str,
         });
         //window.location.reload();
       } catch (error) {
@@ -41,7 +49,7 @@ function ReviewsPage() {
       }
     }
   };
-  
+
   useEffect(() => {
     async function fetchData() {
       try {
@@ -52,14 +60,13 @@ function ReviewsPage() {
       }
     }
     fetchData();
-
   }, []);
 
   review_card =
     reviewsData &&
     reviewsData.map((reviewdata, index) => {
       return (
-        <div key={index}>
+        <div key={index} className="w75">
           <div className="card" style={{ width: "20rem" }}>
             <div>
               <div className="profile">
@@ -88,15 +95,18 @@ function ReviewsPage() {
     <div>
       <form onSubmit={submit_review}>
         <div className="form-group">
-          <label>Post your review here!</label>
-          <textarea
-            className="form-control"
-            id="exampleFormControlTextarea1"
-            rows="3"
-            name="textarea"
-          ></textarea>
+          <label className="w75">Post your review here!</label>
+          <br />
+          <label className="w75">
+            <textarea
+              className="form-control"
+              id="exampleFormControlTextarea1"
+              rows="3"
+              name="textarea"
+            ></textarea>
+          </label>
         </div>
-        <button type="submit" className="btn btn-primary">
+        <button type="submit" className="btn btn-primary w75">
           Submit
         </button>
       </form>
