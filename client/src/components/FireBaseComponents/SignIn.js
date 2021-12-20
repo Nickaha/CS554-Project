@@ -37,11 +37,11 @@ function SignIn() {
   }
   return (
     <div className="container">
-      <br /> 
-      <br /> 
-      <br /> 
-      <br /> 
-      <br /> 
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
       <div className="row">
         <div className="col"></div>
         <div className="col-4">
@@ -72,7 +72,9 @@ function SignIn() {
                 />
               </label>
             </div>
-            <button type="submit">Log in</button>
+            <button type="submit" className="submitbtn">
+              Log in
+            </button>
 
             <button className="forgotPassword" onClick={passwordReset}>
               Forgot Password
