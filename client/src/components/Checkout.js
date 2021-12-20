@@ -148,12 +148,11 @@ function Checkout() {
       {confirm ? (
         <div>
           <p>Order Confirmed!</p>
-          <Link to={"/pickup"}>
-            <button className="addtocart">Pick up your order</button>
+          <Link className="addtocart" to={"/pickup"}>
+                Pick up your order
           </Link>
           <br />
-          <Link to={"/delivery"}>
-            <button className="addtocart">Delivery</button>
+          <Link to={"/delivery"} className="addtocart">Delivery
           </Link>
         </div>
       ) : (

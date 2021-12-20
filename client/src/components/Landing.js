@@ -19,8 +19,8 @@ function Landing() {
         ingredients and our food is all organic. Click order now to get started
         on ordering your food.
         <br />
-        <Link to="/order">
-          <button className="nowbtn">Order Now</button>
+        <Link className="nowbtn" to="/order">
+          Order Now
         </Link>
       </div>
     </div>

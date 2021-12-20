@@ -190,6 +190,10 @@
 
 .addtocart {
   margin-bottom: 10px;
+  color: black;
+  background: white;
+  border: 2px solid black;
+  border-radius: 2px;
 }
 .addtocart:hover {
   color: white;
@@ -244,6 +248,10 @@ nav {
 
 .deltocart {
   margin-bottom: 10px;
+  color: black;
+  background: white;
+  border: 2px solid black;
+  border-radius: 2px;
 }
 .deltocart:hover {
   color: white;
@@ -265,10 +273,10 @@ nav {
   color: black;
 }
 
-.navbar-nav > .active > a {
+/* .navbar-nav > .active > a {
   color: aqua;
   background-color: chartreuse;
 }
 .nav-item > a:hover {
   color: aqua;
-}
+} */

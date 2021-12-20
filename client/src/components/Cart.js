@@ -80,9 +80,9 @@ function Cart() {
                   <dd>{array_to_capital_string(bowl.topping)}</dd>
                   <dt>Price:</dt>
                   <dd>{formatter.format(bowl.price)}</dd>
-
-                  <CartEditItem bowl={bowl} />
-                  <form
+                </dl>
+                <CartEditItem bowl={bowl} />
+                <form
                     onSubmit={(e) => {
                       e.preventDefault();
                       deleteItem(bowl.id);
@@ -94,7 +94,6 @@ function Cart() {
                       className="deltocart"
                     />
                   </form>
-                </dl>
               </li>
             );
           })}
@@ -110,8 +109,8 @@ function Cart() {
       {cart.length > 0 && (
         <div>
           <h3>Total Order Cost: {formatter.format(totalcost)}</h3>
-          <Link to="/checkout">
-            <button className="addtocart">Go to Checkout</button>
+          <Link className="addtocart" to="/checkout">
+            Go to Checkout
           </Link>
         </div>
       )}

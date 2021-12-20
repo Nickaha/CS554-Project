@@ -242,7 +242,8 @@ function Order() {
                   <dd>{array_to_capital_string(bowl.topping)}</dd>
                   <dt>Price:</dt>
                   <dd>{formatter.format(bowl.price)}</dd>
-                  <form
+                </dl>
+                <form
                     onSubmit={(e) => {
                       e.preventDefault();
                       addPremadeBowl(bowl.name);
@@ -254,7 +255,6 @@ function Order() {
                       className="addtocart"
                     />
                   </form>
-                </dl>
               </li>
             )
           );
