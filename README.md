@@ -12,13 +12,14 @@ Getting started:
 6. npm start to start up the express server
 7. open up a new terminal
 8. cd into the client folder
-9. Install Docker Desktop: https://www.docker.com/products/docker-desktop
-10. docker build . -t client
-11. docker run -it -p 3000:3000 client
-12. npm start if you don't want to use docker
-13. open up a new terminal
-14. cd into the other client folder
-15. npm start
-16. you act like an employee and click the button when you finish making a bowl
-17. this will effect delivery / pickup times on the other client (they will know when the order is ready to be picked up or delivered)
-18. try out our website
+9. Need to do npm i before using docker
+10. Install Docker Desktop: https://www.docker.com/products/docker-desktop
+11. docker build . -t client
+12. docker run -it -p 3000:3000 client
+13. npm start if you don't want to use docker
+14. open up a new terminal
+15. cd into the other client folder
+16. npm start
+17. you act like an employee and click the button when you finish making a bowl
+18. this will effect delivery / pickup times on the other client (they will know when the order is ready to be picked up or delivered)
+19. try out our website
