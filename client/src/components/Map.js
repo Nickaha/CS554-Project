@@ -56,7 +56,6 @@
 // export default Map;
 
 //Using Mapbox API
-import '../App.css';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import React, { useState,useEffect, useRef } from 'react';
@@ -68,7 +67,7 @@ import '@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions.css' // Updating 
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_KEY;
 
 const styles = {
-  width: "100vw",
+  width: "50vw",
   height: "calc(100vh - 80px)",
   position: "absolute"
 };
